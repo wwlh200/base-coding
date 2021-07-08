@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .f {
+        border: 1px solid red;
+        overflow: hidden;
+      }
+      .c1 {
+        width: 200px;
+        height: 200px;
+        background-color: royalblue;
+        float: left;
+      }
+      .c2 {
+        width: 100px;
+        height: 100px;
+        background-color: sandybrown;
+        float: left;
+      }
+      .f2 {
+        width: 400px;
+        height: 200px;
+        background-color: skyblue;
+      }
+      .clearfix:after {
+        /*伪元素是行内元素 正常浏览器清除浮动方法*/
+        content: "";
+        display: block;
+        height: 0;
+        clear: both;
+        visibility: hidden;
+      }
+      .clearfix {
+        *zoom: 1; /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+      }
+    </style>
+  </head>
+  <body>
+    <div class="f">
+      <div class="c1 clearfix"></div>
+      <div class="c2 clearfix"></div>
+    </div>
+    <div class="f2"></div>
+  </body>
+</html>

@@ -35,28 +35,41 @@ def addMiddle(head, position, new):
 # 在单链表后插入节点
 def addAfter(head, new):
     ln = head
-    while head.next:
+    # while head.next:
+    #     head = head.next
+    # head.next = new
+    # new.next = None
+    while head:
+        if head.next == None:
+            head.next = new
+            new.next = None
+            break
         head = head.next
-    head.next = new
     head = ln
-    new.next = None
     return head
 
+# 生成链表
 
-# 初始化单链表
-i = 1
-listNode1 = ListNode(-1)
-while i < 5:
-    addAfter(listNode1, ListNode(i))
-    i += 1
-listNode1 = listNode1.next
 
-print(listNode1)
+def generatorNodeList(m,n):
+    i = m
+    listNode1 = ListNode(-1)
+    while i <n:
+        addAfter(listNode1, ListNode(i))
+        i += 1
+    listNode1 = listNode1.next
+    return listNode1
 
-listNode2 = addBefore(listNode1, ListNode(0))
 
-print(listNode2)
+# # 初始化单链表
+# listNode1 = generatorNodeList()
 
-listNode3 = addMiddle(listNode2, 2, ListNode(2.5))
+# print(listNode1)
 
-print(listNode3)
+# listNode2 = addBefore(listNode1, ListNode(0))
+
+# print(listNode2)
+
+# listNode3 = addMiddle(listNode2, 2, ListNode(2.5))
+
+# print(listNode3)

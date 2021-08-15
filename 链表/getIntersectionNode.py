@@ -12,7 +12,31 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
-        
+        """
+        # 哈希表
+        s = set()
+        while headA:
+            s.add(headA)
+            headA = headA.next
+
+        while headB:
+            if headB in s:
+                return headB
+            headB = headB.next
+        return None
+        """
+        head1 = headA
+        head2 = headB
+        """
+            1、相交相等
+            2、相交不相等 a+c+b=b+c+a
+            3、不相交相等
+            4、不相交不等 m+n=n+m
+        """
+        while head1 != head2:
+            head1 = head1.next if head1 else headB
+            head2 = head2.next if head2 else headA
+        return head1
 
 
 listNode1 = generatorNodeList(8, 9)

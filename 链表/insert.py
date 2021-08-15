@@ -5,9 +5,9 @@
 #         self.next = next
 
 class ListNode:
-    def __init__(self, x):
+    def __init__(self, x, val=None):
         self.val = x
-        self.next = None
+        self.next = val
 
 # 在单链表前插入节点
 
@@ -51,10 +51,10 @@ def addAfter(head, new):
 # 生成链表
 
 
-def generatorNodeList(m,n):
+def generatorNodeList(m, n):
     i = m
     listNode1 = ListNode(-1)
-    while i <n:
+    while i < n:
         addAfter(listNode1, ListNode(i))
         i += 1
     listNode1 = listNode1.next

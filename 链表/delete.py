@@ -52,21 +52,16 @@ def deleteMiddle(head, position):
         if ln.next.val == position:
             ln.next = ln.next.next
             break
-        head = head.next
-
-    head = ln
+        ln = ln.next
     return head
 # 删除单链表最后一个节点
 
 
 def deleteLast(head):
     ln = head
-    while head and head.next:
-        if head.next.next == None:
-            head.next = None
-            break
-        head = head.next
-    head = ln
+    while ln.next.next:
+        ln = ln.next
+    ln.next = ln.next.next
     return head
 
 

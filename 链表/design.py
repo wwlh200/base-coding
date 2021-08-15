@@ -86,8 +86,7 @@ class MyListNode(object):
                 break
             i += 1
             head = head.next
-        head = ln
-        return head
+        return ln
 
 
 listNode1 = generatorNodeList()

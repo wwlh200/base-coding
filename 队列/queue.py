@@ -13,14 +13,15 @@ class ArrayQueue:
     def enqueue(self, item):
         self.entries.append(item)
         self.length += 1
+        return True
 
     def dequeue(self):
         if self.length == 0:
-            return
+            return False
         self.length -= 1
         self.head += 1
-        self.entries = self.entries[self.head:]
-        return self.entries[self.head]
+        self.entries.pop(0)
+        return True
 
     def peek(self):
         return self.entries[0]  # 直接返回队列的队首元素
@@ -31,35 +32,35 @@ class ArrayQueue:
 
 class ListNodeQueue:
     def __init__(self):
-        self.entries = None  # 表示队列内的参数
-        self.size = 0  # 表示队列的长度
+        self.head = None  # 表示队首的参数
+        self.tail = None  # 表示队尾的参数
 
     def enqueue(self, item):
-        self.size += 1
-        if not self.entries:
-            self.entries = ListNode(item)
-            return
-        ln = self.entries
-        while ln.next:
-            ln = ln.next
-        ln.next = ListNode(item)
+        new = ListNode(item)
+        if self.is_empty():
+            self.head = new
+            self.tail = new
+        else:
+            self.tail.next = new
+            self.tail = new
 
     def dequeue(self):
-        if self.size == 0:
-            return
-        self.size -= 1
-        ret = self.entries.val
-        self.entries = self.entries.next
-        return ret
+        if self.is_empty():
+            print("空队列无法出队")
+        else:
+            self.head = self.head.next
+
+    def is_empty(self):
+        return not self.head
 
     def peek(self):
-        return self.entries.val  # 直接返回队列的队首元素
+        return self.head.val
 
     def print(self):
-        print(self.entries)
+        print(self.head)
 
 
-queue = ListNodeQueue()
+queue = ArrayQueue()
 queue.enqueue(12)
 queue.enqueue(34)
 queue.enqueue("abd")

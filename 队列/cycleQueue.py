@@ -1,8 +1,9 @@
 class MyCircularQueue:
     def __init__(self, k: int):
         # 一个固定大小的数组，用于保存循环队列的元素。
-        self.queue = []
+        self.queue = ['0']*k
         # 一个整数，保存队首 head 的索引
+        # self.tail=(self.head+self.count-1)%self.capacity
         self.head = -1
         # 循环队列当前的长度，即循环队列中的元素数量。使用 hadIndex 和 count 可以计算出队尾元素的索引，因此不需要队尾属性。
         self.count = 0
@@ -13,17 +14,15 @@ class MyCircularQueue:
         if self.isFull():
             return False
         else:
-            self.queue.insert(self.head+1 % self.capacity, value)
+            self.queue[(self.head+self.count) % self.capacity] = value
             self.count += 1
-            self.head = (self.head+1) % self.capacity
             return True
 
     def deQueue(self) -> bool:
         if self.isEmpty():
             return False
         else:
-            self.queue.pop(0)
-            self.head = self.head-1
+            self.head = (self.head+1) % self.capacity
             self.count -= 1
             return True
 
@@ -35,7 +34,7 @@ class MyCircularQueue:
     def Rear(self) -> int:
         if self.isEmpty():
             return -1
-        return self.queue[self.head-1]
+        return self.queue[(self.head+self.count-1) % self.capacity]
 
     def isEmpty(self) -> bool:
         return self.count == 0

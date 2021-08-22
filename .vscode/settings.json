@@ -13,6 +13,6 @@
         "to",
         "tree"
     ],
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "autopep8",
     "liveServer.settings.port": 5501
 }

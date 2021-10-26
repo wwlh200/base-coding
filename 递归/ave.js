@@ -24,4 +24,3 @@ const ave2 = (n) => {
 };
 
 console.log(ave(5));
- 

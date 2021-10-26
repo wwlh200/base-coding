@@ -1,6 +1,8 @@
 import copy
 
 # 定义链表结构
+
+
 class ListNode:
     def __init__(self, x):
         self.val = x
@@ -22,6 +24,8 @@ def generatorListNode(arr):
 
 listNode1 = generatorListNode(a)
 
+print(listNode1.next.next)
+
 
 def reverse(ln):
     prev = None
@@ -38,3 +42,22 @@ def reverse(ln):
 listNode2 = reverse(copy.deepcopy(listNode1))
 
 print(listNode2)
+
+
+def reverse2(self, ln):
+
+    if not ln.next or not ln:
+        return ln
+
+    ret = reverse2(self, ln.next)
+    # 反转线
+    ln.next.next = ln
+    # 将原来的线删掉
+    ln.next = None
+
+    return ret
+
+
+listNode3 = reverse2(None, copy.deepcopy(listNode1))
+
+print(listNode3)

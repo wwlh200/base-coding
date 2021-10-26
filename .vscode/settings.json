@@ -1,0 +1,18 @@
+{
+    "cSpell.words": [
+        "children",
+        "client",
+        "data",
+        "item",
+        "list",
+        "map",
+        "name",
+        "old",
+        "return",
+        "tenant",
+        "to",
+        "tree"
+    ],
+    "python.formatting.provider": "black",
+    "liveServer.settings.port": 5501
+}
